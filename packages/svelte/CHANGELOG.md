@@ -1,3 +1,29 @@
+## @c15t/svelte@3.0.1-canary.0 (canary)
+
+### The preference dialog scrolls with your CSS
+
+Visitors can scroll to every category and vendor in the preference dialog
+again. Before this fix, the category list did not scroll with some app CSS.
+The cause was `overflow: hidden` on the category list or on a category row,
+for example to clip them to rounded corners. On a phone, a category with
+vendors then went past the bottom of the dialog. The visitor could not scroll
+to the rest.
+
+### Vendor switches show only when you declare vendors
+
+The preference dialog shows only category switches until you declare a
+vendor. Your visitors make one choice for each category. You do not get
+vendor switches that you did not ask for.
+
+Since 3.0.0, the dialog showed a switch for the vendor of each
+`@c15t/integrations` helper. For example, a site that added only `posthog()`
+got a PostHog switch under Analytics. We did not intend this default.
+
+To show vendor switches, declare at least one vendor in the `vendors` option
+or on the backend. The dialog then also lists the vendors of your helpers by
+name, as before. This change affects only the dialog. It does not change when
+a script loads.
+
 ## @c15t/svelte@3.0.0
 
 ### c15t v3

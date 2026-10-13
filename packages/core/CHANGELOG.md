@@ -1,3 +1,29 @@
+## @c15t/core@3.0.1-canary.0 (canary)
+
+### Vendor switches show only when you declare vendors
+
+The preference dialog shows only category switches until you declare a
+vendor. Your visitors make one choice for each category. You do not get
+vendor switches that you did not ask for.
+
+Since 3.0.0, the dialog showed a switch for the vendor of each
+`@c15t/integrations` helper. For example, a site that added only `posthog()`
+got a PostHog switch under Analytics. We did not intend this default.
+
+To show vendor switches, declare at least one vendor in the `vendors` option
+or on the backend. The dialog then also lists the vendors of your helpers by
+name, as before. This change affects only the dialog. It does not change when
+a script loads.
+
+### Load the vendor list without a CORS preflight
+
+In manifest mode, the browser no longer sends the `x-c15t-version` and
+`x-c15t-policy-contract` headers when it fetches the Global Vendor List. The
+request stays a CORS simple request, so a vendor list on another origin loads
+without an `OPTIONS` round trip, and a host that doesn't allow those headers
+no longer fails the fetch. The host must still answer with an
+`Access-Control-Allow-Origin` header that covers the requesting site.
+
 ## @c15t/core@3.0.0
 
 ### c15t v3
